@@ -1,10 +1,22 @@
 import React from "react";
 
-const FormStepper = ({ prev, next }) => {
+type StepperProps = {
+  next: () => void;
+  prev: () => void;
+};
+
+const FormStepper = ({ prev, next }: StepperProps) => {
   return (
-    <footer>
-      <button onClick={prev}>Back</button>
-      <button onClick={next}>Next</button>
+    <footer className="flex w-full justify-between text-xl">
+      <button className="font-bold text-secondary-cool" onClick={prev}>
+        Go Back
+      </button>
+      <button
+        className="rounded-lg bg-primary-marine px-5 py-3 text-white hover:bg-primary-marine-hover"
+        onClick={next}
+      >
+        Next Step
+      </button>
     </footer>
   );
 };
