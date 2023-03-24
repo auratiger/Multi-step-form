@@ -1,9 +1,10 @@
 import React from "react";
-import localFont from "next/font/local";
 
 import { Ubuntu } from "@next/font/google";
 
 import "../../styles/globals.scss";
+
+import { CreateTaskMultiStepFormContainer } from "@/contexts/FormStateContext";
 
 // If loading a variable font, you don't need to specify the font weight
 const ubuntu = Ubuntu({
@@ -23,11 +24,13 @@ export default function RootLayout({
         <title>Multi Step Form</title>
       </head>
       <body className="bg-white">
-        <div className="mx-auto max-w-screen-lg px-6 py-12">
+        <div className=" h-screen max-w-screen-lg p-6">
           <div className="col-start-2">
             {/* Here you can place your Navigation */}
           </div>
-          <div>{children}</div>
+          <CreateTaskMultiStepFormContainer>
+            {children}
+          </CreateTaskMultiStepFormContainer>
         </div>
       </body>
     </html>

@@ -34,6 +34,9 @@ module.exports = {
       backgroundColor: colors,
       textColor: colors,
       borderColor: colors,
+      backgroundImage: {
+        sidebar: "url('../public/images/bg-sidebar-desktop.svg')",
+      },
     },
   },
   plugins: [],
