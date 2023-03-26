@@ -1,37 +1,43 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
+
+import produce from "immer";
+
+export enum Tabs {
+  INFO = "INFO",
+  PLAN = "PLAN",
+  ADDONS = "ADDONS",
+  SUMMARY = "SUMMARY",
+}
 
 export const FORM_STATE = {
   selectedIndex: 0,
-  steps: {
-    info: {
+  tabs: {
+    [Tabs.INFO]: {
       valid: false,
-      dirty: false,
       value: {
         name: "",
-        dueDate: "",
+        email: "",
+        phone: "",
       },
     },
-    plan: {
+    [Tabs.PLAN]: {
       valid: false,
-      dirty: false,
       value: {
         receiveEmails: false,
         receiveNotifications: false,
       },
     },
-    addons: {
+    [Tabs.ADDONS]: {
       valid: false,
-      dirty: false,
       value: {
         receiveEmails: false,
         receiveNotifications: false,
       },
     },
-    summary: {
+    [Tabs.SUMMARY]: {
       valid: false,
-      dirty: false,
       value: {
         receiveEmails: false,
         receiveNotifications: false,
@@ -40,38 +46,54 @@ export const FORM_STATE = {
   },
 };
 
-export const FORM_STEPS = [
-  {
-    label: `YOUR INFO`,
-  },
-  {
-    label: `SELECT PLAN`,
-  },
-  {
-    label: `ADD-ONS`,
-  },
-  {
-    label: `SUMMARY`,
-  },
-];
-
 export const FormStateContext = createContext({
   form: FORM_STATE,
   setForm: (
     form: typeof FORM_STATE | ((form: typeof FORM_STATE) => typeof FORM_STATE)
   ) => {},
+  next: () => {},
+  prev: () => {},
+  setSelectedIndex: (index: number) => {},
 });
 
 export const CreateTaskMultiStepFormContainer = ({ children }) => {
   const [form, setForm] = useState(FORM_STATE);
 
-  console.log(form);
+  const next = useCallback(() => {
+    setForm(
+      produce((form) => {
+        form.selectedIndex += 1;
+      })
+    );
+  }, [setForm]);
+
+  const prev = useCallback(() => {
+    setForm(
+      produce((form) => {
+        form.selectedIndex -= 1;
+      })
+    );
+  }, [setForm]);
+
+  const setSelectedIndex = useCallback(
+    (index: number) => {
+      setForm(
+        produce((form) => {
+          form.selectedIndex = index;
+        })
+      );
+    },
+    [setForm]
+  );
 
   return (
     <FormStateContext.Provider
       value={{
         form,
         setForm,
+        next,
+        prev,
+        setSelectedIndex,
       }}
     >
       {children}
