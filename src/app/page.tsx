@@ -4,14 +4,14 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
 import { Tab } from "@headlessui/react";
-import classNames from "classnames";
 
+import Sidebar from "@/components/Form/Sidebar";
 import Stepper from "@/components/Form/Stepper";
 import TabHeader from "@/components/Form/TabHeader";
 
 import { Tabs, useMultiFormContext } from "@/contexts/FormStateContext";
 
-const FORM_TABS = [
+export const FORM_TABS = [
   {
     tab: Tabs.INFO,
     label: `YOUR INFO`,
@@ -51,9 +51,9 @@ const FORM_TABS = [
 ];
 
 export default function Example() {
-  const { form, setSelectedIndex } = useMultiFormContext();
-
-  const selectedIndex = form.selectedIndex;
+  const {
+    form: { selectedIndex },
+  } = useMultiFormContext();
 
   return (
     <main className="flex h-full justify-center font-ubuntu text-lg font-medium text-white">
@@ -62,35 +62,7 @@ export default function Example() {
         selectedIndex={selectedIndex}
         className="grid w-full grid-cols-3"
       >
-        <Tab.List className="col-span-1 grid h-full content-start gap-10 space-x-1 overflow-hidden rounded-xl bg-blue-900/20  bg-sidebar bg-cover bg-bottom bg-no-repeat p-12">
-          {FORM_TABS.map(({ label }, index) => {
-            return (
-              <Tab
-                key={label}
-                onClick={() => {
-                  setSelectedIndex(index);
-                }}
-                className={"flex gap-4  focus:outline-none "}
-              >
-                <span
-                  className={classNames(
-                    "grid aspect-square h-full place-content-center rounded-full border border-white font-bold",
-                    {
-                      "bg-primary-light text-primary-marine":
-                        selectedIndex === index,
-                    }
-                  )}
-                >
-                  {index}
-                </span>
-                <div className="flex flex-col items-start justify-center">
-                  <span className="text-primary-pastel">Step {index + 1}</span>
-                  <span className="font-bold">{label}</span>
-                </div>
-              </Tab>
-            );
-          })}
-        </Tab.List>
+        <Sidebar />
         <Tab.Panels className="col-span-2 mt-2">
           {FORM_TABS.map(({ title, description, Component }, idx) => (
             <Tab.Panel
