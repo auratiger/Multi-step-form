@@ -11,7 +11,7 @@ import TabHeader from "@/components/Form/TabHeader";
 
 import { Tabs, useMultiFormContext } from "@/contexts/FormStateContext";
 
-export const FORM_TABS = [
+const FORM_TABS = [
   {
     tab: Tabs.INFO,
     label: `YOUR INFO`,
@@ -62,7 +62,7 @@ export default function Example() {
         selectedIndex={selectedIndex}
         className="grid w-full grid-cols-3"
       >
-        <Sidebar />
+        <Sidebar form_tabs={FORM_TABS} />
         <Tab.Panels className="col-span-2 mt-2">
           {FORM_TABS.map(({ title, description, Component }, idx) => (
             <Tab.Panel

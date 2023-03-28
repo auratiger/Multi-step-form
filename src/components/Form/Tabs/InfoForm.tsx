@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useForm, useFormState } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import produce from "immer";
 
@@ -25,8 +25,6 @@ const InfoForm = () => {
       phone: formSection.value.phone,
     },
   });
-
-  console.log(errors);
 
   useEffect(() => {
     const value = getValues();
@@ -67,6 +65,7 @@ const InfoForm = () => {
         lable="Name"
         id="name"
         innerRef={nameRef}
+        placeholder="e.g. Stephen King"
         errorMessage={errors?.name?.message}
         {...nameControl}
       />
@@ -75,6 +74,7 @@ const InfoForm = () => {
         id="email"
         type="email"
         innerRef={emailRef}
+        placeholder="e.g. stephenking@lorem.com"
         errorMessage={errors?.email?.message}
         {...emailControl}
       />

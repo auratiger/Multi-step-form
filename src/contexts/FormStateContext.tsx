@@ -25,8 +25,8 @@ export const FORM_STATE = {
     [Tabs.PLAN]: {
       valid: false,
       value: {
-        receiveEmails: false,
-        receiveNotifications: false,
+        plan: null,
+        yearly: false,
       },
     },
     [Tabs.ADDONS]: {

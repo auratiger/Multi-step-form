@@ -23,15 +23,12 @@ export default function RootLayout({
       <head>
         <title>Multi Step Form</title>
       </head>
-      <body className="bg-white">
-        <div className=" h-screen p-6">
-          <div className="col-start-2">
-            {/* Here you can place your Navigation */}
-          </div>
-          <CreateTaskMultiStepFormContainer>
+      <body>
+        <CreateTaskMultiStepFormContainer>
+          <div className="m-auto h-[920px] w-[1440px] bg-white p-6">
             {children}
-          </CreateTaskMultiStepFormContainer>
-        </div>
+          </div>
+        </CreateTaskMultiStepFormContainer>
       </body>
     </html>
   );
