@@ -13,8 +13,8 @@ const Sidebar = ({ form_tabs }) => {
 
   return (
     <Tab.List className="col-span-1 grid h-full content-start gap-10 space-x-1 overflow-hidden rounded-xl bg-blue-900/20  bg-sidebar bg-cover bg-bottom bg-no-repeat p-12">
-      {form_tabs.map(({ label, tab }, index) => {
-        const isTabDisabled = tabs[tab].valid;
+      {form_tabs.map(({ label, tab }, index: number) => {
+        const isTabDisabled = !tabs[tab].valid;
 
         return (
           <Tab
@@ -23,7 +23,7 @@ const Sidebar = ({ form_tabs }) => {
               setSelectedIndex(index);
             }}
             className={"flex gap-4  focus:outline-none "}
-            disabled={isTabDisabled}
+            disabled={false}
           >
             <span
               className={classNames(

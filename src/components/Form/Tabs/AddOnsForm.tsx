@@ -1,6 +1,10 @@
 import React from "react";
 
+import produce from "immer";
+
 import AddOnField from "@/components/AddOnField";
+
+import { Tabs, useMultiFormContext } from "@/contexts/FormStateContext";
 
 export const ADD_ONS = [
   {
@@ -24,15 +28,29 @@ export const ADD_ONS = [
 ];
 
 const AddOnsForm = () => {
+  const { form, setForm } = useMultiFormContext();
+
+  const handleAddOnSelect = (index: number) => {
+    setForm(
+      produce((formState) => {
+        formState.tabs[Tabs.ADDONS].value.addons.push;
+      })
+    );
+  };
+
   return (
     <form className="grid gap-4 text-xl" onSubmit={(e) => e.preventDefault()}>
-      {ADD_ONS.map(({ name, description, monthly }) => {
+      {ADD_ONS.map(({ name, description, monthly, yearly }) => {
+        const isYearly: boolean = form.tabs[Tabs.PLAN].value.isYearly;
+        const price: number = isYearly ? yearly : monthly;
+
         return (
           <AddOnField
             key={name}
             name={name}
             description={description}
-            monthly={monthly}
+            price={price}
+            isYearly={isYearly}
           />
         );
       })}

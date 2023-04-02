@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import produce from "immer";
 
 import AdvancedIcon from "@/components/icons/icon-advanced";
@@ -33,8 +31,16 @@ export const PLANS = [
 ];
 
 const PlanForm = () => {
-  const { setForm } = useMultiFormContext();
-  const [isYearly, setIsYearly] = useState(false);
+  const {
+    form: {
+      tabs: {
+        [Tabs.PLAN]: {
+          value: { isYearly },
+        },
+      },
+    },
+    setForm,
+  } = useMultiFormContext();
 
   const handlePlanSelect = () => {
     setForm(
@@ -42,7 +48,7 @@ const PlanForm = () => {
         formState.tabs[Tabs.PLAN] = {
           value: {
             plan: PLANS[0].name,
-            yearly: false,
+            isYearly: false,
           },
           valid: true,
         };
@@ -51,13 +57,20 @@ const PlanForm = () => {
   };
 
   const onSubToggle = (e, state: boolean) => {
-    setIsYearly(state);
+    setForm(
+      produce((formState) => {
+        formState.tabs[Tabs.PLAN].value.isYearly = state;
+      })
+    );
   };
 
   return (
     <form className="grid gap-10 text-xl" onSubmit={(e) => e.preventDefault()}>
       <div className="flex  gap-4">
         {PLANS.map((plan) => {
+          const price: number = isYearly ? plan.yearly : plan.monthly;
+          const period: string = isYearly ? "yr" : "mo";
+
           return (
             <button
               key={plan.name}
@@ -69,7 +82,7 @@ const PlanForm = () => {
 
               <div className="mt-auto grid gap-1 text-start">
                 <span className="text-md">{plan.name}</span>
-                <span className="text-sm text-secondary-cool">{`$${plan.monthly}/yr`}</span>
+                <span className="text-sm text-secondary-cool">{`$${price}/${period}`}</span>
                 {isYearly && (
                   <span className="text-sm text-primary-marine">
                     2 months free

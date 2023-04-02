@@ -26,22 +26,17 @@ export const FORM_STATE = {
       valid: false,
       value: {
         plan: null,
-        yearly: false,
+        isYearly: false,
       },
     },
     [Tabs.ADDONS]: {
-      valid: false,
+      valid: true,
       value: {
-        receiveEmails: false,
-        receiveNotifications: false,
+        addons: [],
       },
     },
     [Tabs.SUMMARY]: {
-      valid: false,
-      value: {
-        receiveEmails: false,
-        receiveNotifications: false,
-      },
+      valid: true,
     },
   },
 };

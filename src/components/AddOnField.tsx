@@ -7,11 +7,12 @@ import Checkbox from "./Checkbox";
 type Props = {
   name: string;
   description: string;
-  monthly: number;
+  price: number;
+  isYearly: boolean;
   handler?: (e: any, state: boolean) => void;
 };
 
-const AddOnField = ({ name, description, handler, monthly }: Props) => {
+const AddOnField = ({ name, description, handler, price, isYearly }: Props) => {
   const [checked, setChecked] = useState(false);
 
   const handleEvent = (e: any) => {
@@ -20,6 +21,8 @@ const AddOnField = ({ name, description, handler, monthly }: Props) => {
 
     handler?.(e, newState);
   };
+
+  const period: string = isYearly ? "yr" : "mo";
 
   return (
     <button
@@ -36,7 +39,7 @@ const AddOnField = ({ name, description, handler, monthly }: Props) => {
           {description}
         </span>
       </div>
-      <span className="ml-auto text-base font-light tracking-wider text-primary-purple">{`+$${monthly}/yr`}</span>
+      <span className="ml-auto text-base font-light tracking-wider text-primary-purple">{`+$${price}/${period}`}</span>
     </button>
   );
 };
