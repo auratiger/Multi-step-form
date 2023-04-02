@@ -33,8 +33,8 @@ const FORM_TABS = [
   {
     tab: Tabs.ADDONS,
     label: `ADD-ONS`,
-    title: "Select your plan",
-    description: "",
+    title: "Pick add-ons",
+    description: "Add-ons help enchance your gaming experience.",
     Component: dynamic(() => import("@/components/Form/Tabs/AddOnsForm"), {
       ssr: false,
     }),
@@ -68,12 +68,10 @@ export default function Example() {
             <Tab.Panel
               key={idx}
               className={
-                "mx-auto grid h-full max-w-[70%] place-content-between rounded-xl bg-white p-4 py-10 outline-none"
+                "mx-auto flex h-full max-w-[70%] flex-col place-content-between rounded-xl bg-white p-4 py-10 outline-none"
               }
             >
-              <div
-                className={"flex w-full flex-col space-y-6 text-primary-marine"}
-              >
+              <div className={"grid space-y-6 text-primary-marine"}>
                 <TabHeader title={title} description={description} />
 
                 {/* TODO: create an empty looking card the expected size of the Component as a fallback  */}

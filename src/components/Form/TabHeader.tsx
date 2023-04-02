@@ -9,7 +9,9 @@ const TabHeader = ({ title, description }: Props) => {
   return (
     <header className="mb-8">
       <h1 className="text-5xl font-bold leading-relaxed">{title}</h1>
-      <span className="text-xl text-secondary-cool">{description}</span>
+      <span className="text-xl font-light text-secondary-cool">
+        {description}
+      </span>
     </header>
   );
 };

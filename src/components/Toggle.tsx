@@ -5,14 +5,13 @@ import classNames from "classnames";
 type Props = {
   checked?: boolean;
   disabled?: boolean;
-  onChange?: (e: any, newChecked: boolean) => void;
+  onChange?: (e: any, state: boolean) => void;
 };
 
 const Toggle = ({ checked = false, disabled = false, onChange }: Props) => {
   const [isChecked, setIsChecked] = useState<boolean>(checked);
 
   const handleOnChange = (e: any) => {
-    e.preventDefault();
     if (disabled) return;
 
     const newChecked = !isChecked;
@@ -21,7 +20,7 @@ const Toggle = ({ checked = false, disabled = false, onChange }: Props) => {
   };
 
   return (
-    <label className="relative inline-flex cursor-pointer items-center">
+    <label className="relative inline-flex h-[1.76rem] cursor-pointer items-center">
       <input
         type="checkbox"
         value=""

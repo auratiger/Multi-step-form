@@ -12,7 +12,7 @@ export enum Tabs {
 }
 
 export const FORM_STATE = {
-  selectedIndex: 0,
+  selectedIndex: 2,
   tabs: {
     [Tabs.INFO]: {
       valid: false,

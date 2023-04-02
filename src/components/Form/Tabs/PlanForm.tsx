@@ -9,24 +9,26 @@ import Toggle from "@/components/Toggle";
 
 import { Tabs, useMultiFormContext } from "@/contexts/FormStateContext";
 
+const iconSize: string = "h-[55px] w-[55px]";
+
 export const PLANS = [
   {
     name: "Arcade",
     monthly: 9,
     yearly: 90,
-    renderImage: () => <ArcadeIcon className="h-[55px] w-[55px]" />,
+    renderIcon: () => <ArcadeIcon className={iconSize} />,
   },
   {
     name: "Advanced",
     monthly: 12,
     yearly: 120,
-    renderImage: () => <AdvancedIcon className="h-[55px] w-[55px]" />,
+    renderIcon: () => <AdvancedIcon className={iconSize} />,
   },
   {
     name: "Pro",
     monthly: 15,
     yearly: 150,
-    renderImage: () => <ProIcon className="h-[55px] w-[55px]" />,
+    renderIcon: () => <ProIcon className={iconSize} />,
   },
 ];
 
@@ -34,7 +36,7 @@ const PlanForm = () => {
   const { setForm } = useMultiFormContext();
   const [isYearly, setIsYearly] = useState(false);
 
-  const handlePlanSelect = (e) => {
+  const handlePlanSelect = () => {
     setForm(
       produce((formState) => {
         formState.tabs[Tabs.PLAN] = {
@@ -63,7 +65,7 @@ const PlanForm = () => {
               onFocus={handlePlanSelect}
               className="grid h-[240px] flex-1 rounded-lg border p-6 focus:bg-secondary-alabaster focus:outline-primary-pastel"
             >
-              {plan.renderImage()}
+              {plan.renderIcon()}
 
               <div className="mt-auto grid gap-1 text-start">
                 <span className="text-md">{plan.name}</span>
@@ -84,7 +86,6 @@ const PlanForm = () => {
         <Toggle checked={isYearly} onChange={onSubToggle} />
         <span>Yearly</span>
       </div>
-      <button className="sr-only"></button>
     </form>
   );
 };
