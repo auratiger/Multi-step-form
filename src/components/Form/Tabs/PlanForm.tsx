@@ -1,10 +1,11 @@
-import { useId } from "react";
+import { useId, useState } from "react";
 
 import produce from "immer";
 
 import AdvancedIcon from "@/components/icons/icon-advanced";
 import ArcadeIcon from "@/components/icons/icon-arcade";
 import ProIcon from "@/components/icons/icon-pro";
+import PlanField from "@/components/PlanField";
 import Toggle from "@/components/Toggle";
 
 import { Tabs, useMultiFormContext } from "@/contexts/FormStateContext";
@@ -44,12 +45,15 @@ const PlanForm = () => {
     setForm,
   } = useMultiFormContext();
 
+  const [selectedOption, setSelectedOption] = useState(-1);
+
   const id = useId();
   const monthId: string = id + "-mo";
   const yearId: string = id + "-yr";
 
   const handlePlanSelect = (index: number) => {
     return () => {
+      setSelectedOption(index);
       setForm(
         produce((formState) => {
           const fs = formState.tabs[Tabs.PLAN];
@@ -72,31 +76,19 @@ const PlanForm = () => {
   return (
     <form className="grid gap-10 text-xl" onSubmit={(e) => e.preventDefault()}>
       <div className="flex  gap-4">
-        {PLANS.map((plan, index) => {
-          const price: number = isYearly ? plan.yearly : plan.monthly;
-          const period: string = isYearly ? "yr" : "mo";
-
-          const handle = handlePlanSelect(index);
+        {PLANS.map((plan, index: number) => {
+          const handler = handlePlanSelect(index);
 
           return (
-            <button
+            <PlanField
               key={plan.name}
-              onClick={handle}
-              onFocus={handle}
-              className="grid h-[240px] flex-1 rounded-lg border p-6 focus:bg-secondary-alabaster focus:outline-primary-pastel"
-            >
-              {plan.renderIcon()}
-
-              <div className="mt-auto grid gap-1 text-start">
-                <span className="text-md">{plan.name}</span>
-                <span className="text-sm text-secondary-cool">{`$${price}/${period}`}</span>
-                {isYearly && (
-                  <span className="text-sm text-primary-marine">
-                    2 months free
-                  </span>
-                )}
-              </div>
-            </button>
+              value={index}
+              isYearly={isYearly}
+              plan={plan}
+              isSelected={selectedOption === index}
+              render={plan.renderIcon}
+              handler={handler}
+            />
           );
         })}
       </div>

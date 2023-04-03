@@ -32,11 +32,11 @@ const Toggle = ({
         className="peer sr-only"
         aria-checked={isChecked}
         checked={isChecked}
+        onClick={handleOnChange}
         {...other}
         readOnly
       />
       <div
-        onClick={handleOnChange}
         className={classNames(
           "peer h-[1.6rem] w-[2.86rem] rounded-full after:absolute after:top-[0.24rem] after:left-[3px] after:aspect-square after:w-5 after:rounded-full after:border after:border-gray-300 after:bg-white after:transition-all after:content-[''] peer-checked:after:translate-x-full peer-checked:after:border-white peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-700 dark:peer-focus:ring-blue-800",
           disabled ? "bg-red-200" : "bg-primary-marine"
