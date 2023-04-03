@@ -75,7 +75,7 @@ export default function Example() {
         className="grid w-full grid-cols-3"
       >
         <Sidebar form_tabs={FORM_TABS} />
-        <Tab.Panels className="col-span-2 mt-2">
+        <Tab.Panels className="col-span-2 mt-2 max-md:col-span-4">
           {FORM_TABS.map(({ title, description, Component }, index: number) => (
             <Tab.Panel
               key={index}

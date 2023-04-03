@@ -22,7 +22,7 @@ const PlanField = ({
 
   return (
     <label
-      className={`grid h-[240px] flex-1 rounded-lg border p-6 focus-within:outline focus-within:outline-primary-pastel ${
+      className={`flex h-[240px] flex-1 gap-4 rounded-lg border p-6 focus-within:outline focus-within:outline-primary-pastel md:flex-col ${
         isSelected && "bg-secondary-alabaster"
       }`}
     >

@@ -94,8 +94,10 @@ export const CreateTaskMultiStepFormContainer = ({ children }) => {
       ...form.tabs[Tabs.ADDONS].value,
     };
 
+    next();
+
     console.log(result);
-  }, [form]);
+  }, [form, next]);
 
   return (
     <FormStateContext.Provider

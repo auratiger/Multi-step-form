@@ -23,11 +23,9 @@ export default function RootLayout({
       <head>
         <title>Multi Step Form</title>
       </head>
-      <body>
+      <body className="h-[100vh]">
         <CreateTaskMultiStepFormContainer>
-          <div className="m-auto h-[920px] w-[1440px] bg-white p-6">
-            {children}
-          </div>
+          <div className="m-auto h-full bg-white p-6">{children}</div>
         </CreateTaskMultiStepFormContainer>
       </body>
     </html>

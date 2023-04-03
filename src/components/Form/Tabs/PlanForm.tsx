@@ -75,7 +75,7 @@ const PlanForm = () => {
 
   return (
     <form className="grid gap-10 text-xl" onSubmit={(e) => e.preventDefault()}>
-      <div className="flex  gap-4">
+      <div className="flex gap-4 max-md:flex-col">
         {PLANS.map((plan, index: number) => {
           const handler = handlePlanSelect(index);
 
