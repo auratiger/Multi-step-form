@@ -1,10 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface Props {
   isSelected: boolean;
   handler: () => void;
   value: string | number;
-  render: () => {};
+  render: () => ReactNode;
   plan: any;
   isYearly: boolean;
 }
