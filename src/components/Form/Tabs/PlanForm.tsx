@@ -42,18 +42,17 @@ const PlanForm = () => {
     setForm,
   } = useMultiFormContext();
 
-  const handlePlanSelect = () => {
-    setForm(
-      produce((formState) => {
-        formState.tabs[Tabs.PLAN] = {
-          value: {
-            plan: PLANS[0].name,
-            isYearly: false,
-          },
-          valid: true,
-        };
-      })
-    );
+  const handlePlanSelect = (index: number) => {
+    return () => {
+      setForm(
+        produce((formState) => {
+          const fs = formState.tabs[Tabs.PLAN];
+          fs.valid = true;
+          fs.value.plan = PLANS[index].name;
+          fs.value.price = PLANS[index].monthly;
+        })
+      );
+    };
   };
 
   const onSubToggle = (e, state: boolean) => {
@@ -67,15 +66,17 @@ const PlanForm = () => {
   return (
     <form className="grid gap-10 text-xl" onSubmit={(e) => e.preventDefault()}>
       <div className="flex  gap-4">
-        {PLANS.map((plan) => {
+        {PLANS.map((plan, index) => {
           const price: number = isYearly ? plan.yearly : plan.monthly;
           const period: string = isYearly ? "yr" : "mo";
+
+          const handle = handlePlanSelect(index);
 
           return (
             <button
               key={plan.name}
-              onClick={handlePlanSelect}
-              onFocus={handlePlanSelect}
+              onClick={handle}
+              onFocus={handle}
               className="grid h-[240px] flex-1 rounded-lg border p-6 focus:bg-secondary-alabaster focus:outline-primary-pastel"
             >
               {plan.renderIcon()}

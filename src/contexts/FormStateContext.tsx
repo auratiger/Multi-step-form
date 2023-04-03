@@ -9,10 +9,11 @@ export enum Tabs {
   PLAN = "PLAN",
   ADDONS = "ADDONS",
   SUMMARY = "SUMMARY",
+  COMPLETE = "COMPLETE",
 }
 
 export const FORM_STATE = {
-  selectedIndex: 2,
+  selectedIndex: 4,
   tabs: {
     [Tabs.INFO]: {
       valid: false,
@@ -26,6 +27,7 @@ export const FORM_STATE = {
       valid: false,
       value: {
         plan: null,
+        price: null,
         isYearly: false,
       },
     },
@@ -36,6 +38,9 @@ export const FORM_STATE = {
       },
     },
     [Tabs.SUMMARY]: {
+      valid: true,
+    },
+    [Tabs.COMPLETE]: {
       valid: true,
     },
   },
@@ -49,6 +54,7 @@ export const FormStateContext = createContext({
   next: () => {},
   prev: () => {},
   setSelectedIndex: (index: number) => {},
+  confirm: () => {},
 });
 
 export const CreateTaskMultiStepFormContainer = ({ children }) => {
@@ -81,6 +87,8 @@ export const CreateTaskMultiStepFormContainer = ({ children }) => {
     [setForm]
   );
 
+  const confirm = useCallback(() => {}, [setForm]);
+
   return (
     <FormStateContext.Provider
       value={{
@@ -89,6 +97,7 @@ export const CreateTaskMultiStepFormContainer = ({ children }) => {
         next,
         prev,
         setSelectedIndex,
+        confirm,
       }}
     >
       {children}

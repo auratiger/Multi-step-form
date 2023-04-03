@@ -30,18 +30,28 @@ export const ADD_ONS = [
 const AddOnsForm = () => {
   const { form, setForm } = useMultiFormContext();
 
+  const isYearly: boolean = form.tabs[Tabs.PLAN].value.isYearly;
+
   const handleAddOnSelect = (index: number) => {
-    setForm(
-      produce((formState) => {
-        formState.tabs[Tabs.ADDONS].value.addons.push;
-      })
-    );
+    return (state: boolean) => {
+      const addon = ADD_ONS[index];
+      if (state) {
+        setForm(
+          produce((formState) => {
+            formState.tabs[Tabs.ADDONS].value.addons.push({
+              name: addon.name,
+              description: addon.description,
+              price: isYearly ? addon.yearly : addon.monthly,
+            });
+          })
+        );
+      }
+    };
   };
 
   return (
     <form className="grid gap-4 text-xl" onSubmit={(e) => e.preventDefault()}>
-      {ADD_ONS.map(({ name, description, monthly, yearly }) => {
-        const isYearly: boolean = form.tabs[Tabs.PLAN].value.isYearly;
+      {ADD_ONS.map(({ name, description, monthly, yearly }, index) => {
         const price: number = isYearly ? yearly : monthly;
 
         return (
@@ -51,6 +61,7 @@ const AddOnsForm = () => {
             description={description}
             price={price}
             isYearly={isYearly}
+            handler={handleAddOnSelect(index)}
           />
         );
       })}

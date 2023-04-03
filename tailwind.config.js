@@ -3,6 +3,7 @@ const colors = {
   "primary-marine-hover": "hsl(213, 96%, 18%, 0.9)",
   "primary-marine-disabled": "hsl(213, 96%, 18%, 0.4)",
   "primary-purple": "hsl(243, 100%, 62%)",
+  "primary-purple-hover": "hsl(243, 100%, 62%, 0.9)",
   "primary-pastel": "hsl(228, 100%, 84%)",
   "primary-light": "hsl(206, 94%, 87%)",
   "secondary-strawberry": "hsl(354, 84%, 57%)",

@@ -20,6 +20,7 @@ const FORM_TABS = [
     Component: dynamic(() => import("@/components/Form/Tabs/InfoForm"), {
       ssr: false,
     }),
+    show: true,
   },
   {
     tab: Tabs.PLAN,
@@ -29,6 +30,7 @@ const FORM_TABS = [
     Component: dynamic(() => import("@/components/Form/Tabs/PlanForm"), {
       ssr: false,
     }),
+    show: true,
   },
   {
     tab: Tabs.ADDONS,
@@ -38,6 +40,7 @@ const FORM_TABS = [
     Component: dynamic(() => import("@/components/Form/Tabs/AddOnsForm"), {
       ssr: false,
     }),
+    show: true,
   },
   {
     tab: Tabs.SUMMARY,
@@ -47,6 +50,15 @@ const FORM_TABS = [
     Component: dynamic(() => import("@/components/Form/Tabs/SummaryForm"), {
       ssr: false,
     }),
+    show: true,
+  },
+  {
+    tab: Tabs.COMPLETE,
+    label: `COMPLETE`,
+    Component: dynamic(() => import("@/components/Form/Tabs/CompleteForm"), {
+      ssr: false,
+    }),
+    show: true,
   },
 ];
 
@@ -71,7 +83,11 @@ export default function Example() {
                 "mx-auto flex h-full max-w-[70%] flex-col place-content-between rounded-xl bg-white p-4 py-10 outline-none"
               }
             >
-              <div className={"grid space-y-6 text-primary-marine"}>
+              <div
+                className={
+                  "flex h-full flex-col place-content-start gap-6 text-primary-marine"
+                }
+              >
                 <TabHeader title={title} description={description} />
 
                 {/* TODO: create an empty looking card the expected size of the Component as a fallback  */}

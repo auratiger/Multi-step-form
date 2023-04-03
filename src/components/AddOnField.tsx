@@ -9,17 +9,17 @@ type Props = {
   description: string;
   price: number;
   isYearly: boolean;
-  handler?: (e: any, state: boolean) => void;
+  handler?: (state: boolean) => void;
 };
 
 const AddOnField = ({ name, description, handler, price, isYearly }: Props) => {
   const [checked, setChecked] = useState(false);
 
-  const handleEvent = (e: any) => {
+  const handleEvent = () => {
     const newState: boolean = !checked;
     setChecked(newState);
 
-    handler?.(e, newState);
+    handler?.(newState);
   };
 
   const period: string = isYearly ? "yr" : "mo";

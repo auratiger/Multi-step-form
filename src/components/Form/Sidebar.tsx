@@ -13,7 +13,9 @@ const Sidebar = ({ form_tabs }) => {
 
   return (
     <Tab.List className="col-span-1 grid h-full content-start gap-10 space-x-1 overflow-hidden rounded-xl bg-blue-900/20  bg-sidebar bg-cover bg-bottom bg-no-repeat p-12">
-      {form_tabs.map(({ label, tab }, index: number) => {
+      {form_tabs.map(({ label, tab, show }, index: number) => {
+        if (!show) return;
+
         const isTabDisabled = !tabs[tab].valid;
 
         return (
