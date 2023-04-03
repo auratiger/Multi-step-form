@@ -1,3 +1,5 @@
+import { useId } from "react";
+
 import produce from "immer";
 
 import AdvancedIcon from "@/components/icons/icon-advanced";
@@ -41,6 +43,10 @@ const PlanForm = () => {
     },
     setForm,
   } = useMultiFormContext();
+
+  const id = useId();
+  const monthId: string = id + "-mo";
+  const yearId: string = id + "-yr";
 
   const handlePlanSelect = (index: number) => {
     return () => {
@@ -96,9 +102,13 @@ const PlanForm = () => {
       </div>
 
       <div className="flex w-full justify-center gap-8 rounded-lg bg-secondary-alabaster px-4 py-3">
-        <span>Monthly</span>
-        <Toggle checked={isYearly} onChange={onSubToggle} />
-        <span>Yearly</span>
+        <span id={monthId}>Monthly</span>
+        <Toggle
+          checked={isYearly}
+          onChange={onSubToggle}
+          aria-describedby={`${monthId} ${yearId}`}
+        />
+        <span id={yearId}>Yearly</span>
       </div>
     </form>
   );

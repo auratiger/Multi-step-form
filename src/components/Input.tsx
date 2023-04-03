@@ -21,13 +21,21 @@ const Input = ({
   innerRef,
   ...other
 }: Props) => {
+  const errorDescriptionId: string = id + "-error";
   return (
     <div className="mb-4">
       <div className="flex items-center justify-between">
-        <label className="mb-2 block text-lg font-light">{lable}</label>
+        <label htmlFor={id} className="mb-2 block text-lg font-light">
+          {lable}
+        </label>
 
         {errorMessage && (
-          <span className="text-sm font-bold text-red-500">{errorMessage}</span>
+          <span
+            id={errorDescriptionId}
+            className="text-sm font-bold text-red-500"
+          >
+            {errorMessage}
+          </span>
         )}
       </div>
 
@@ -39,6 +47,7 @@ const Input = ({
           }
         )}
         id={id}
+        aria-describedby={errorDescriptionId}
         type={type}
         placeholder={placeholder}
         ref={innerRef}

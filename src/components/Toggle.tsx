@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { AriaAttributes, useState } from "react";
 
 import classNames from "classnames";
 
-type Props = {
+interface Props extends AriaAttributes {
   checked?: boolean;
   disabled?: boolean;
   onChange?: (e: any, state: boolean) => void;
-};
+}
 
-const Toggle = ({ checked = false, disabled = false, onChange }: Props) => {
+const Toggle = ({
+  checked = false,
+  disabled = false,
+  onChange,
+  ...other
+}: Props) => {
   const [isChecked, setIsChecked] = useState<boolean>(checked);
 
   const handleOnChange = (e: any) => {
@@ -25,7 +30,9 @@ const Toggle = ({ checked = false, disabled = false, onChange }: Props) => {
         type="checkbox"
         value=""
         className="peer sr-only"
+        aria-checked={isChecked}
         checked={isChecked}
+        {...other}
         readOnly
       />
       <div

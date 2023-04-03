@@ -41,7 +41,7 @@ const SummaryForm = () => {
       >
         <div className="flex items-center justify-between">
           <div className="grid place-items-start">
-            <span className="text-primary-marine">{`${plan} (${periodLong}ly)`}</span>
+            <span className="text-lg font-bold text-primary-marine">{`${plan} (${periodLong}ly)`}</span>
             <button
               className="text-sm font-light underline"
               onClick={moveToPlanStep}
@@ -49,7 +49,7 @@ const SummaryForm = () => {
               change
             </button>
           </div>
-          <span className="text-primary-marine">{`$${planPrice}/${period}`}</span>
+          <span className="text-lg font-bold text-primary-marine">{`$${planPrice}/${period}`}</span>
         </div>
         <div className="border"></div>
         <div className="grid gap-4">

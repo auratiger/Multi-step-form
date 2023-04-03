@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useId } from "react";
 import { useForm } from "react-hook-form";
 
 import produce from "immer";
@@ -25,6 +25,8 @@ const InfoForm = () => {
       phone: formSection.value.phone,
     },
   });
+
+  const id = useId();
 
   useEffect(() => {
     const value = getValues();
@@ -63,7 +65,7 @@ const InfoForm = () => {
     <form className="grid gap-4 text-xl" onSubmit={(e) => e.preventDefault()}>
       <Input
         lable="Name"
-        id="name"
+        id={id + "-name"}
         innerRef={nameRef}
         placeholder="e.g. Stephen King"
         errorMessage={errors?.name?.message}
@@ -71,7 +73,7 @@ const InfoForm = () => {
       />
       <Input
         lable="Email Address"
-        id="email"
+        id={id + "-email"}
         type="email"
         innerRef={emailRef}
         placeholder="e.g. stephenking@lorem.com"
@@ -80,7 +82,7 @@ const InfoForm = () => {
       />
       <Input
         lable="Phone Number"
-        id="phone"
+        id={id + "-phone"}
         type="number"
         placeholder="e.g. +1 234 567 890"
         innerRef={phoneRef}

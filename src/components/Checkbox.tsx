@@ -13,6 +13,7 @@ const Checkbox = ({ checked, focusable, disabled, onChange }: Props) => {
       id="checkbox"
       type="checkbox"
       value=""
+      aria-checked={checked}
       checked={checked}
       disabled={disabled}
       onChange={onChange}
