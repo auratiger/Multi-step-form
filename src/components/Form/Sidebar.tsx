@@ -16,7 +16,7 @@ const Sidebar = ({ form_tabs }) => {
       {form_tabs.map(({ label, tab, show }, index: number) => {
         if (!show) return;
 
-        const isTabDisabled = !tabs[tab].valid;
+        const isTabDisabled = !tabs[tab].valid && selectedIndex !== index;
 
         return (
           <Tab
@@ -25,7 +25,7 @@ const Sidebar = ({ form_tabs }) => {
               setSelectedIndex(index);
             }}
             className={"flex gap-4  focus:outline-none "}
-            disabled={false}
+            disabled={isTabDisabled}
           >
             <span
               className={classNames(

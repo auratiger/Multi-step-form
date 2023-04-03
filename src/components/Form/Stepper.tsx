@@ -9,6 +9,7 @@ const Stepper = () => {
     form: { selectedIndex, tabs },
     next,
     prev,
+    confirm,
   } = useMultiFormContext();
 
   const isNextDisabled: boolean = !Object.values(tabs)[selectedIndex].valid;
@@ -42,7 +43,7 @@ const Stepper = () => {
           className={classNames(
             "ml-auto rounded-lg bg-primary-purple px-5 py-3 text-white hover:bg-primary-marine-hover"
           )}
-          onClick={next}
+          onClick={confirm}
           disabled={isNextDisabled}
         >
           Confirm

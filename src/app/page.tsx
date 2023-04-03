@@ -76,9 +76,9 @@ export default function Example() {
       >
         <Sidebar form_tabs={FORM_TABS} />
         <Tab.Panels className="col-span-2 mt-2">
-          {FORM_TABS.map(({ title, description, Component }, idx) => (
+          {FORM_TABS.map(({ title, description, Component }, index: number) => (
             <Tab.Panel
-              key={idx}
+              key={index}
               className={
                 "mx-auto flex h-full max-w-[70%] flex-col place-content-between rounded-xl bg-white p-4 py-10 outline-none"
               }

@@ -13,7 +13,7 @@ export enum Tabs {
 }
 
 export const FORM_STATE = {
-  selectedIndex: 4,
+  selectedIndex: 0,
   tabs: {
     [Tabs.INFO]: {
       valid: false,
@@ -87,7 +87,15 @@ export const CreateTaskMultiStepFormContainer = ({ children }) => {
     [setForm]
   );
 
-  const confirm = useCallback(() => {}, [setForm]);
+  const confirm = useCallback(() => {
+    const result = {
+      ...form.tabs[Tabs.INFO].value,
+      ...form.tabs[Tabs.PLAN].value,
+      ...form.tabs[Tabs.ADDONS].value,
+    };
+
+    console.log(result);
+  }, [form]);
 
   return (
     <FormStateContext.Provider
