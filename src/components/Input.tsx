@@ -30,7 +30,10 @@ const Input = ({
         </label>
 
         {errorMessage && (
-          <small id={errorDescriptionId} className="font-bold text-red-500">
+          <small
+            id={errorDescriptionId}
+            className="font-bold text-secondary-strawberry"
+          >
             {errorMessage}
           </small>
         )}
@@ -40,7 +43,7 @@ const Input = ({
         className={classNames(
           "focus:shadow-outline w-full appearance-none rounded-lg border p-4 leading-tight shadow focus:border-primary-purple focus:outline-none",
           {
-            "border-red-500": !!errorMessage,
+            "border-secondary-strawberry": !!errorMessage,
           }
         )}
         id={id}
