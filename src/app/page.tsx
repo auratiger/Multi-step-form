@@ -9,6 +9,7 @@ import classNames from "classnames";
 import Sidebar from "@/components/Form/Sidebar";
 import Stepper from "@/components/Form/Stepper";
 import TabHeader from "@/components/Form/TabHeader";
+import InfoForm from "@/components/Form/Tabs/InfoForm";
 
 import { Tabs, useMultiFormContext } from "@/contexts/FormStateContext";
 
@@ -18,9 +19,7 @@ const FORM_TABS = [
     label: `YOUR INFO`,
     title: "Personal info",
     description: "Please provide your name, email address, and phone number.",
-    Component: dynamic(() => import("@/components/Form/Tabs/InfoForm"), {
-      ssr: false,
-    }),
+    Component: () => <InfoForm />,
     show: true,
   },
   {
