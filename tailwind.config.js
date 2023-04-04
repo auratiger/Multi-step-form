@@ -40,6 +40,7 @@ module.exports = {
       colors: colors,
       backgroundImage: {
         sidebar: "url('../public/images/bg-sidebar-desktop.svg')",
+        sidebarMobile: "url('../public/images/bg-sidebar-mobile.svg')",
       },
     },
   },

@@ -15,7 +15,7 @@ const Sidebar = ({ form_tabs }) => {
     <Tab.List
       className={classNames(
         "col-span-1 flex flex-col content-start gap-12 overflow-hidden rounded-xl p-12",
-        "bg-sidebar bg-cover bg-bottom bg-no-repeat",
+        "bg-sidebar bg-cover bg-bottom bg-no-repeat max-md:bg-sidebarMobile",
         "max-md:absolute max-md:inset-0 max-md:bottom-auto max-md:h-[300px] max-md:flex-row max-md:justify-center max-md:gap-4 max-md:rounded-none"
       )}
     >
