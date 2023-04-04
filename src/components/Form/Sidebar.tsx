@@ -12,7 +12,13 @@ const Sidebar = ({ form_tabs }) => {
   } = useMultiFormContext();
 
   return (
-    <Tab.List className="col-span-1 grid h-full content-start gap-10 space-x-1 overflow-hidden rounded-xl bg-blue-900/20  bg-sidebar bg-cover bg-bottom bg-no-repeat p-12 max-md:sr-only">
+    <Tab.List
+      className={classNames(
+        "col-span-1 flex flex-col content-start gap-12 overflow-hidden rounded-xl p-12",
+        "bg-sidebar bg-cover bg-bottom bg-no-repeat",
+        "max-md:absolute max-md:inset-0 max-md:bottom-auto max-md:h-[300px] max-md:flex-row max-md:justify-center max-md:gap-4 max-md:rounded-none"
+      )}
+    >
       {form_tabs.map(({ label, tab, show }, index: number) => {
         if (!show) return;
 
@@ -24,12 +30,13 @@ const Sidebar = ({ form_tabs }) => {
             onClick={() => {
               setSelectedIndex(index);
             }}
-            className={"flex gap-4  focus:outline-none "}
+            className={"flex gap-4 focus:outline-none "}
             disabled={isTabDisabled}
           >
             <span
               className={classNames(
                 "grid aspect-square h-full place-content-center rounded-full border border-white font-bold",
+                "max-md:h-[40px]",
                 {
                   "bg-primary-light text-primary-marine":
                     selectedIndex === index,
@@ -38,7 +45,7 @@ const Sidebar = ({ form_tabs }) => {
             >
               {index + 1}
             </span>
-            <div className="flex flex-col items-start justify-center">
+            <div className="flex flex-col items-start justify-center max-md:sr-only">
               <span className="text-primary-pastel">Step {index + 1}</span>
               <span className="font-bold">{label}</span>
             </div>

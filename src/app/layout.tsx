@@ -25,7 +25,7 @@ export default function RootLayout({
       </head>
       <body className="h-[100vh]">
         <CreateTaskMultiStepFormContainer>
-          <div className="m-auto h-full bg-white p-6">{children}</div>
+          {children}
         </CreateTaskMultiStepFormContainer>
       </body>
     </html>

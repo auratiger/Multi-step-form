@@ -62,7 +62,7 @@ const InfoForm = () => {
   });
 
   return (
-    <form className="grid gap-4 text-xl" onSubmit={(e) => e.preventDefault()}>
+    <form className="grid gap-4" onSubmit={(e) => e.preventDefault()}>
       <Input
         lable="Name"
         id={id + "-name"}

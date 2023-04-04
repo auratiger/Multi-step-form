@@ -16,7 +16,12 @@ const Stepper = () => {
   const tabsCount: number = Object.keys(tabs).length - 1;
 
   return (
-    <footer className="flex w-full justify-between text-xl">
+    <footer
+      className={classNames(
+        "flex w-full justify-between bg-white",
+        "max-md:absolute max-md:inset-0 max-md:top-auto max-md:p-6"
+      )}
+    >
       {selectedIndex !== 0 && selectedIndex !== tabsCount && (
         <button className="font-bold text-secondary-cool" onClick={prev}>
           Go Back

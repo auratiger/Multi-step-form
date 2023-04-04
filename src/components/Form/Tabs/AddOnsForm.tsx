@@ -50,7 +50,7 @@ const AddOnsForm = () => {
   };
 
   return (
-    <form className="grid gap-4 text-xl" onSubmit={(e) => e.preventDefault()}>
+    <form className="grid gap-4" onSubmit={(e) => e.preventDefault()}>
       {ADD_ONS.map(({ name, description, monthly, yearly }, index) => {
         const price: number = isYearly ? yearly : monthly;
 

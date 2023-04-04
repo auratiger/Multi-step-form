@@ -41,15 +41,12 @@ const SummaryForm = () => {
       >
         <div className="flex items-center justify-between">
           <div className="grid place-items-start">
-            <span className="text-lg font-bold text-primary-marine">{`${plan} (${periodLong}ly)`}</span>
-            <button
-              className="text-sm font-light underline"
-              onClick={moveToPlanStep}
-            >
-              change
+            <span className="font-bold text-primary-marine">{`${plan} (${periodLong}ly)`}</span>
+            <button className="font-light underline" onClick={moveToPlanStep}>
+              <small>change</small>
             </button>
           </div>
-          <span className="text-lg font-bold text-primary-marine">{`$${planPrice}/${period}`}</span>
+          <span className="font-bold text-primary-marine">{`$${planPrice}/${period}`}</span>
         </div>
         <div className="border"></div>
         <div className="grid gap-4">
@@ -63,9 +60,9 @@ const SummaryForm = () => {
           })}
         </div>
       </div>
-      <div className="flex justify-between px-6 font-light text-secondary-cool">
+      <div className="mt-4 flex justify-between px-6 font-light text-secondary-cool">
         <span>{`Total (per ${periodLong})`}</span>
-        <span className="text-xl font-bold text-primary-purple">
+        <span className="font-bold text-primary-purple">
           {`+$${calculateTotal()}/${period}`}
         </span>
       </div>

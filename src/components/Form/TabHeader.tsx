@@ -8,8 +8,10 @@ type Props = {
 const TabHeader = ({ title, description }: Props) => {
   return (
     <header className="mb-8">
-      <h1 className="text-5xl font-bold leading-relaxed">{title}</h1>
-      <span className="text-xl font-light text-secondary-cool">
+      <h1 className="mb-2 text-5xl font-bold leading-relaxed max-md:text-3xl">
+        {title}
+      </h1>
+      <span className="text-xl font-light text-secondary-cool max-md:text-lg">
         {description}
       </span>
     </header>

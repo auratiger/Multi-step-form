@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
 import { Tab } from "@headlessui/react";
+import classNames from "classnames";
 
 import Sidebar from "@/components/Form/Sidebar";
 import Stepper from "@/components/Form/Stepper";
@@ -68,24 +69,29 @@ export default function Example() {
   } = useMultiFormContext();
 
   return (
-    <main className="flex h-full justify-center font-ubuntu text-lg font-medium text-white">
+    <main className="flex h-full justify-center bg-white font-ubuntu text-lg font-medium text-white max-md:bg-secondary-magnolia">
       <Tab.Group
         as={"div"}
         selectedIndex={selectedIndex}
-        className="grid w-full grid-cols-3"
+        className="mx-auto grid w-full grid-cols-3 py-10 px-4"
       >
         <Sidebar form_tabs={FORM_TABS} />
-        <Tab.Panels className="col-span-2 mt-2 max-md:col-span-4">
+        <Tab.Panels
+          className={classNames(
+            "z-10 col-span-2 rounded-lg bg-white",
+            "max-md:col-span-4 max-md:my-auto"
+          )}
+        >
           {FORM_TABS.map(({ title, description, Component }, index: number) => (
             <Tab.Panel
               key={index}
               className={
-                "mx-auto flex h-full max-w-[70%] flex-col place-content-between rounded-xl bg-white p-4 py-10 outline-none"
+                "mx-auto flex h-full flex-col place-content-between rounded-xl bg-white outline-none md:max-w-[70%]"
               }
             >
               <div
                 className={
-                  "flex h-full flex-col place-content-start gap-6 text-primary-marine"
+                  "flex h-full flex-col place-content-start p-6 text-primary-marine"
                 }
               >
                 <TabHeader title={title} description={description} />

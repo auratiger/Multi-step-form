@@ -38,10 +38,12 @@ const PlanField = ({
 
       <div className="mt-auto grid gap-1 text-start">
         <span className="text-md">{plan.name}</span>
-        <span className="text-sm text-secondary-cool">{`$${price}/${period}`}</span>
-        {isYearly && (
-          <span className="text-sm text-primary-marine">2 months free</span>
-        )}
+        <div className="flex flex-col max-md:flex-row max-md:gap-4">
+          <span className="text-sm text-secondary-cool">{`$${price}/${period}`}</span>
+          {isYearly && (
+            <span className="text-sm text-primary-marine">2 months free</span>
+          )}
+        </div>
       </div>
     </label>
   );

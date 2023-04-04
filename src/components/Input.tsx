@@ -25,17 +25,14 @@ const Input = ({
   return (
     <div className="mb-4">
       <div className="flex items-center justify-between">
-        <label htmlFor={id} className="mb-2 block text-lg font-light">
+        <label htmlFor={id} className="mb-2 block font-light">
           {lable}
         </label>
 
         {errorMessage && (
-          <span
-            id={errorDescriptionId}
-            className="text-sm font-bold text-red-500"
-          >
+          <small id={errorDescriptionId} className="font-bold text-red-500">
             {errorMessage}
-          </span>
+          </small>
         )}
       </div>
 

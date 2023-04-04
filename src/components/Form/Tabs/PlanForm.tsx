@@ -10,7 +10,7 @@ import Toggle from "@/components/Toggle";
 
 import { Tabs, useMultiFormContext } from "@/contexts/FormStateContext";
 
-const iconSize: string = "h-[55px] w-[55px]";
+const iconSize: string = "h-[50px] w-[50px]";
 
 export const PLANS = [
   {
@@ -74,7 +74,7 @@ const PlanForm = () => {
   };
 
   return (
-    <form className="grid gap-10 text-xl" onSubmit={(e) => e.preventDefault()}>
+    <form className="grid gap-10" onSubmit={(e) => e.preventDefault()}>
       <div className="flex gap-4 max-md:flex-col">
         {PLANS.map((plan, index: number) => {
           const handler = handlePlanSelect(index);
