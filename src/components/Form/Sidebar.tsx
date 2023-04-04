@@ -19,10 +19,17 @@ const Sidebar = ({ form_tabs }) => {
         "max-md:absolute max-md:inset-0 max-md:bottom-auto max-md:h-[300px] max-md:flex-row max-md:justify-center max-md:gap-4 max-md:rounded-none"
       )}
     >
-      {form_tabs.map(({ label, tab, show }, index: number) => {
+      {form_tabs.map(({ label, show }, index: number) => {
         if (!show) return;
 
-        const isTabDisabled = !tabs[tab].valid && selectedIndex !== index;
+        const arePreviousTabsValid: boolean = Object.keys(tabs)
+          .slice(0, index)
+          .every((key) => {
+            return tabs[key].valid;
+          });
+
+        const isTabDisabled: boolean =
+          selectedIndex !== index && !arePreviousTabsValid;
 
         return (
           <Tab
