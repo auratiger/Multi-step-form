@@ -62,13 +62,18 @@ const InfoForm = () => {
   });
 
   return (
-    <form className="grid gap-4" onSubmit={(e) => e.preventDefault()}>
+    <form
+      className="grid gap-4"
+      onSubmit={(e) => e.preventDefault()}
+      id={id + "-info-form"}
+    >
       <Input
         lable="Name"
         id={id + "-name"}
         innerRef={nameRef}
         placeholder="e.g. Stephen King"
         errorMessage={errors?.name?.message}
+        customAnimation={1}
         {...nameControl}
       />
       <Input
@@ -78,6 +83,7 @@ const InfoForm = () => {
         innerRef={emailRef}
         placeholder="e.g. stephenking@lorem.com"
         errorMessage={errors?.email?.message}
+        customAnimation={2}
         {...emailControl}
       />
       <Input
@@ -87,6 +93,7 @@ const InfoForm = () => {
         placeholder="e.g. +1 234 567 890"
         innerRef={phoneRef}
         errorMessage={errors?.phone?.message}
+        customAnimation={3}
         {...phoneControl}
       />
 

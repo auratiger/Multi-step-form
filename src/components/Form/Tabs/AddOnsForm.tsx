@@ -62,6 +62,7 @@ const AddOnsForm = () => {
             price={price}
             isYearly={isYearly}
             handler={handleAddOnSelect(index)}
+            customAnimation={index}
           />
         );
       })}

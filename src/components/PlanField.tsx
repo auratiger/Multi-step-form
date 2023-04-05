@@ -1,5 +1,9 @@
 import React, { ReactNode } from "react";
 
+import { motion } from "framer-motion";
+
+import { inputVariants } from "@/motion/variants";
+
 interface Props {
   isSelected: boolean;
   handler: () => void;
@@ -7,6 +11,7 @@ interface Props {
   render: () => ReactNode;
   plan: any;
   isYearly: boolean;
+  customAnimation: number;
 }
 
 const PlanField = ({
@@ -16,12 +21,14 @@ const PlanField = ({
   render,
   plan,
   isYearly,
+  customAnimation,
 }: Props) => {
   const price: number = isYearly ? plan.yearly : plan.monthly;
   const period: string = isYearly ? "yr" : "mo";
 
   return (
-    <label
+    <motion.label
+      variants={inputVariants(customAnimation)}
       className={`flex h-[240px] flex-1 gap-4 rounded-lg border p-6 focus-within:outline focus-within:outline-primary-pastel md:flex-col ${
         isSelected && "bg-secondary-alabaster"
       }`}
@@ -45,7 +52,7 @@ const PlanField = ({
           )}
         </div>
       </div>
-    </label>
+    </motion.label>
   );
 };
 

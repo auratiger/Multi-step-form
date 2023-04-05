@@ -88,6 +88,7 @@ const PlanForm = () => {
               isSelected={selectedOption === index}
               render={plan.renderIcon}
               handler={handler}
+              customAnimation={index}
             />
           );
         })}

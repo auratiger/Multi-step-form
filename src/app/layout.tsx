@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 
 import { Ubuntu } from "@next/font/google";
+import { AnimatePresence } from "framer-motion";
 
 import "../../styles/globals.scss";
 
@@ -25,7 +28,7 @@ export default function RootLayout({
       </head>
       <body className="h-[100vh]">
         <CreateTaskMultiStepFormContainer>
-          {children}
+          <AnimatePresence>{children}</AnimatePresence>
         </CreateTaskMultiStepFormContainer>
       </body>
     </html>
