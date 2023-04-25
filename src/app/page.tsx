@@ -25,8 +25,8 @@ const FORM_TABS = [
   {
     tab: Tabs.PLAN,
     label: `SELECT PLAN`,
-    title: "Personal info",
-    description: "Please provide your name, email address, and phone number.",
+    title: "Select your plan",
+    description: "You have the option of monthly or yearly billing",
     Component: dynamic(() => import("@/components/Form/Tabs/PlanForm"), {
       ssr: false,
     }),
@@ -45,8 +45,9 @@ const FORM_TABS = [
   {
     tab: Tabs.SUMMARY,
     label: `SUMMARY`,
-    title: "Personal info",
-    description: "Please provide your name, email address, and phone number.",
+    title: "Finishing up",
+    description: "Double-check everything looks OK before confirming",
+    // NOTE: lazy loading
     Component: dynamic(() => import("@/components/Form/Tabs/SummaryForm"), {
       ssr: false,
     }),
