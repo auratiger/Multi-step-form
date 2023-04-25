@@ -1,6 +1,9 @@
 import React from "react";
 
 import classNames from "classnames";
+import { motion } from "framer-motion";
+
+import { inputVariants } from "@/motion/variants";
 
 type Props = {
   lable: string;
@@ -10,6 +13,7 @@ type Props = {
   errorMessage?: string;
   innerRef: any;
   other?: [];
+  customAnimation: number;
 };
 
 const Input = ({
@@ -19,11 +23,12 @@ const Input = ({
   placeholder,
   errorMessage,
   innerRef,
+  customAnimation,
   ...other
 }: Props) => {
   const errorDescriptionId: string = id + "-error";
   return (
-    <div className="mb-4">
+    <motion.div className="mb-4" variants={inputVariants(customAnimation)}>
       <div className="flex items-center justify-between">
         <label htmlFor={id} className="mb-2 block font-light">
           {lable}
@@ -53,7 +58,7 @@ const Input = ({
         ref={innerRef}
         {...other}
       />
-    </div>
+    </motion.div>
   );
 };
 

@@ -2,8 +2,10 @@ import React from "react";
 
 import { Tab } from "@headlessui/react";
 import classNames from "classnames";
+import { motion } from "framer-motion";
 
 import { useMultiFormContext } from "@/contexts/FormStateContext";
+import { navItemVariants } from "@/motion/variants";
 
 const Sidebar = ({ form_tabs }) => {
   const {
@@ -32,31 +34,38 @@ const Sidebar = ({ form_tabs }) => {
           selectedIndex !== index && !arePreviousTabsValid;
 
         return (
-          <Tab
+          <motion.div
+            className="flex whitespace-nowrap"
+            initial="hidden"
+            animate="show"
             key={label}
-            onClick={() => {
-              setSelectedIndex(index);
-            }}
-            className={"flex gap-4 focus:outline-none "}
-            disabled={isTabDisabled}
+            variants={navItemVariants(index)}
           >
-            <span
-              className={classNames(
-                "grid aspect-square h-full place-content-center rounded-full border border-white font-bold",
-                "max-md:h-[40px]",
-                {
-                  "bg-primary-light text-primary-marine":
-                    selectedIndex === index,
-                }
-              )}
+            <Tab
+              onClick={() => {
+                setSelectedIndex(index);
+              }}
+              className={"flex gap-4 focus:outline-none "}
+              disabled={isTabDisabled}
             >
-              {index + 1}
-            </span>
-            <div className="flex flex-col items-start justify-center max-md:sr-only">
-              <span className="text-primary-pastel">Step {index + 1}</span>
-              <span className="font-bold">{label}</span>
-            </div>
-          </Tab>
+              <span
+                className={classNames(
+                  "grid aspect-square h-full place-content-center rounded-full border border-white font-bold",
+                  "max-md:h-[40px]",
+                  {
+                    "bg-primary-light text-primary-marine":
+                      selectedIndex === index,
+                  }
+                )}
+              >
+                {index + 1}
+              </span>
+              <div className="flex flex-col items-start justify-center max-md:sr-only">
+                <span className="text-primary-pastel">Step {index + 1}</span>
+                <span className="font-bold">{label}</span>
+              </div>
+            </Tab>
+          </motion.div>
         );
       })}
     </Tab.List>

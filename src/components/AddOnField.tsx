@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 
 import classNames from "classnames";
+import { motion } from "framer-motion";
 
 import Checkbox from "./Checkbox";
+
+import { inputVariants } from "@/motion/variants";
 
 type Props = {
   name: string;
@@ -10,9 +13,17 @@ type Props = {
   price: number;
   isYearly: boolean;
   handler?: (state: boolean) => void;
+  customAnimation: number;
 };
 
-const AddOnField = ({ name, description, handler, price, isYearly }: Props) => {
+const AddOnField = ({
+  name,
+  description,
+  handler,
+  price,
+  isYearly,
+  customAnimation,
+}: Props) => {
   const [checked, setChecked] = useState(false);
 
   const handleEvent = () => {
@@ -25,7 +36,11 @@ const AddOnField = ({ name, description, handler, price, isYearly }: Props) => {
   const period: string = isYearly ? "yr" : "mo";
 
   return (
-    <button
+    <motion.button
+      variants={inputVariants(customAnimation)}
+      exit={{
+        opacity: 0,
+      }}
       onClick={handleEvent}
       className={classNames(
         "flex items-center justify-start gap-6 rounded-lg border p-6 outline-primary-purple focus:bg-secondary-alabaster focus:outline focus:outline-2",
@@ -40,7 +55,7 @@ const AddOnField = ({ name, description, handler, price, isYearly }: Props) => {
         </span>
       </div>
       <span className="ml-auto text-base font-light tracking-wider text-primary-purple">{`+$${price}/${period}`}</span>
-    </button>
+    </motion.button>
   );
 };
 
